@@ -5,7 +5,7 @@ import { MONGODB_URI } from "./config.js";
 const connectDB = async () => {
   try {
     const dbUri = MONGODB_URI;
-    await mongoose.connect(dbUri, {
+    await mongoose.createConnection(dbUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
