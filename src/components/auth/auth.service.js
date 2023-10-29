@@ -43,7 +43,7 @@ export const loginUser = async (email,password) => {
 
 export const jwtCreateToken = async (email, role_id, ) => {
 	const token = jwt.sign(
-		{ email: email, role_id: role_id },
+		{ email: email,  storeId: storeId ,role_id: role_id },
 		APP_SECRET_ACCESS,
 		{
 			expiresIn: APP_SECRET_ACCESS_TIME,
