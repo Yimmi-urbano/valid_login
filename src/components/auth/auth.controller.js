@@ -4,12 +4,12 @@ import {
 } from "./auth.validation.js";
 export const registerUserHandler = async (req, res, next) => {
   try {
-    const {email,name,dni,password,role_id} = req.body;
-    const verifiedUser = validateUser({ email,name,dni,password,role_id })
+    const {email,name,dni,password,role_id,phonecell} = req.body;
+    const verifiedUser = validateUser({ email,name,dni,password,role_id,phonecell })
     if (!verifiedUser.valid) {
 			return res.status(400).json({ errors: verifiedUser.errors });
 		}
-    const newUser = await registerUser(email,name,dni,password,role_id);    
+    const newUser = await registerUser(email,name,dni,password,role_id,phonecell);    
     return res.status(201).json(newUser);
   } catch (err) {
     next(err);

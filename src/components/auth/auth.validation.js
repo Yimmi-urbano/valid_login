@@ -3,6 +3,7 @@ import Joi from "joi";
 export const userSchema = Joi.object().keys({
   email: Joi.string().email().required(),
   name:Joi.string().required(),
+  phonecell:Joi.string().required(),
   dni: Joi.string().required(),
 	password: Joi.string().required(),
 	role_id:  Joi.string().required(),
