@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     email: { type: String, unique: true },
     name: { type: String },
+    phonecell: {type:String},
     password: { type: String },
     status: { type: String },
     role_id: { type: String },
@@ -15,7 +16,6 @@ const userSchema = new Schema({
         type: String,
 		unique: true,
         default: function () {
-
 			const emailPart = this.email.split('@')[0].toUpperCase();
             const firstChar = emailPart.charAt(0);
             const lastChar = emailPart.charAt(emailPart.length - 1);

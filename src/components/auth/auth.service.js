@@ -13,7 +13,7 @@ import {
 } from "./auth.dao.js";
 
 
-export const registerUser = async (email,name,dni,password,role_id) => {
+export const registerUser = async (email,name,dni,password,role_id, phonecell) => {
 	const user = await getByLoginlUserDao(email);
 	if (user) {
 		throw UserAlreadyRegisteredError;
@@ -21,7 +21,7 @@ export const registerUser = async (email,name,dni,password,role_id) => {
 	const salt = await bcrypt.genSalt();
 	const hashedPassword = await bcrypt.hash(password, salt);
 	const data={
-		email,name,password:hashedPassword,role_id,status:"active",created_at:new Date(),updated_at:new Date(),dni
+		email,name,password:hashedPassword,role_id,status:"active",created_at:new Date(),updated_at:new Date(),dni,phonecell:phonecell
 	}
 	const result = await registerUserDao(data);
 	return result
