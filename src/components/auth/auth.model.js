@@ -12,7 +12,7 @@ const userSchema = new Schema({
     dni: { type: String },
     created_at: { type: Date },
     updated_at: { type: Date },
-	storeId: {
+	userId: {
         type: String,
 		unique: true,
         default: function () {

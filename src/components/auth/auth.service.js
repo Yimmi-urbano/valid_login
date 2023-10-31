@@ -36,14 +36,14 @@ export const loginUser = async (email,password) => {
 	if (!isMatch) {
 		throw UserInvalidCredentialsError;
 	}
-	const token = await jwtCreateToken(email, user.role_id, user.storeId, user.name);
+	const token = await jwtCreateToken(email, user.role_id, user.userId, user.name);
 
-	return { token: token, roleId: user.role_id, storeId: user.storeId,name:user.name };
+	return { token: token, roleId: user.role_id, userId: user.userId,name:user.name };
 };
 
-export const jwtCreateToken = async (email, role_id, storeId,name ) => {
+export const jwtCreateToken = async (email, role_id, userId,name ) => {
 	const token = jwt.sign(
-		{ email: email,  storeId: storeId ,role_id: role_id, name:name },
+		{ email: email,  userId: userId ,role_id: role_id, name:name },
 		APP_SECRET_ACCESS,
 		{
 			expiresIn: APP_SECRET_ACCESS_TIME,
